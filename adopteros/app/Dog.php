@@ -10,4 +10,7 @@ class Dog extends Model
 
     protected $dates = ['created_at','updated_at','fecha_nac'];
     
+    public function followups(){
+        return $this->hasMany('App\Followup');
+    }
 }
