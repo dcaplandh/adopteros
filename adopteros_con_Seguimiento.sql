@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2018 a las 21:56:51
--- Versión del servidor: 10.1.32-MariaDB
--- Versión de PHP: 7.2.5
+-- Servidor: localhost
+-- Tiempo de generación: 14-12-2018 a las 13:57:02
+-- Versión del servidor: 5.7.22-0ubuntu0.16.04.1
+-- Versión de PHP: 7.2.6-1+ubuntu16.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -103,6 +103,21 @@ INSERT INTO `dog_adopter` (`id`, `created_at`, `updated_at`, `dog_id`, `adopter_
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `dog_followup`
+--
+
+CREATE TABLE `dog_followup` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `dog_id` int(11) NOT NULL,
+  `text` varchar(255) NOT NULL,
+  `extra` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `dog_vaccine`
 --
 
@@ -160,7 +175,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Guadalupe Gutierrez', 'guada2703@gmail.com', '$2y$10$yTw2oQk6cH9JfQINHxEJk.eM706O..FiqlmVCJQ5TML05VDuKHo8C', '4yN4Ms7pRd2GXcYOOGMkWmkxQlEP7tj8zoiayrVv1OVCkJdK7mRi6gh7muci', '2018-07-27 18:55:45', '2018-07-27 18:55:45');
+(1, 'Guadalupe Gutierrez', 'guada2703@gmail.com', '$2y$10$yTw2oQk6cH9JfQINHxEJk.eM706O..FiqlmVCJQ5TML05VDuKHo8C', '4yN4Ms7pRd2GXcYOOGMkWmkxQlEP7tj8zoiayrVv1OVCkJdK7mRi6gh7muci', '2018-07-27 18:55:45', '2018-07-27 18:55:45'),
+(2, 'Diego', 'caplan.diego@gmail.com', '$2y$10$31.ATKvDtyAfrXUWZ3ycZ.6S.fVD35ycFFdB3lu9LSX8OddHy1Zw.', NULL, '2018-12-14 18:52:31', '2018-12-14 18:52:31');
 
 -- --------------------------------------------------------
 
@@ -199,6 +215,12 @@ ALTER TABLE `adopters`
 -- Indices de la tabla `dogs`
 --
 ALTER TABLE `dogs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `dog_followup`
+--
+ALTER TABLE `dog_followup`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -257,7 +279,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `vaccinations`
